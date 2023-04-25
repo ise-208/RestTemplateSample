@@ -15,6 +15,7 @@ public class RestTemplateController {
     @GetMapping("/hello")
     public void hello() {
         log.info("helloの実施");
-        HttpEntity<String> request = exchangeSample.request;
+        RestTemplateSampleEntity entity = new RestTemplateSampleEntity();
+        exchangeSample.sendRequest(entity);
     }
 }
