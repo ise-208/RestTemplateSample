@@ -3,12 +3,10 @@ package com.ise.RestTemplateSample;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
 import org.springframework.web.client.RequestCallback;
-import org.springframework.web.client.ResponseExtractor;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class PostSample {
@@ -16,10 +14,9 @@ public class PostSample {
 
     RestTemplateSampleEntity entity;
 
-    public ResponseEntity<String> sendExchangeRequest(RestTemplateSampleEntity entity){
+    public ResponseEntity<String> sendExchangeRequest(RestTemplateSampleEntity entity) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-
 
         Map<String, Object> param = new HashMap<>();
         param.put("name", entity.getName());
@@ -44,13 +41,24 @@ public class PostSample {
                     MediaType.APPLICATION_JSON,
                     MediaType.ALL));
         };
-
-
         restTemplate.execute(
                 "url",
                 HttpMethod.GET,
                 requestCallback,
                 response -> null,
                 RestTemplateSampleEntity.class);
+
+    }
+
+    public void getRestTemplate() {
+        RestTemplateResponse restTemplateResponse = new RestTemplateResponse();
+
+        ResponseEntity<RestTemplateResponse> response = restTemplate.getForEntity(
+                "url",
+                RestTemplateResponse.class,
+                restTemplateResponse
+        );
+        System.out.println(response.getBody());
+
     }
 }
