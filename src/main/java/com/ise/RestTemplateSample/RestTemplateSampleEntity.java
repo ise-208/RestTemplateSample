@@ -10,4 +10,12 @@ public class RestTemplateSampleEntity {
     String name;
     int age;
 
+    @Override
+    public String toString() {
+        return "RestTemplateSampleEntity{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

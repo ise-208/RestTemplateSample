@@ -23,8 +23,8 @@ public class PostSample {
         param.put("age", entity.getAge());
         param.put("id", entity.getId());
         ResponseEntity<String> response = restTemplate.exchange(
-                "url",
-                HttpMethod.GET,
+                "http://localhost:8081/hello",
+                HttpMethod.POST,
                 new HttpEntity<>(param, httpHeaders),
                 String.class);
 
@@ -42,8 +42,8 @@ public class PostSample {
                     MediaType.ALL));
         };
         restTemplate.execute(
-                "url",
-                HttpMethod.GET,
+                "http://localhost:8081/hoge",
+                HttpMethod.POST,
                 requestCallback,
                 response -> null,
                 RestTemplateSampleEntity.class);

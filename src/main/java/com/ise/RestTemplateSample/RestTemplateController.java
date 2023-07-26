@@ -17,4 +17,11 @@ public class RestTemplateController {
         RestTemplateSampleEntity entity = new RestTemplateSampleEntity();
         postSample.sendExchangeRequest(entity);
     }
+
+    @GetMapping("/hoge")
+    public void hoge() {
+        log.info("hogeの実施");
+        RestTemplateSampleEntity entity = new RestTemplateSampleEntity();
+        postSample.sendExecuteRequest(entity);
+    }
 }
